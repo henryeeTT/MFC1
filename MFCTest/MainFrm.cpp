@@ -1,10 +1,5 @@
-
-// MainFrm.cpp : CMainFrame 類別的實作
-//
-
 #include "stdafx.h"
 #include "MFCTest.h"
-
 #include "MainFrm.h"
 
 #ifdef _DEBUG
@@ -33,42 +28,37 @@ static UINT indicators[] =
 // CMainFrame 建構/解構
 
 CMainFrame::CMainFrame()
-	: m_Menu_Version(0)
-{
+	: m_Menu_Version(0) {
 	// TODO: 在此加入成員初始化程式碼
-	 ChMainMenu.LoadMenu(IDR_MAINFRAME);
-	 ENMainMenu.LoadMenu(IDR_MyMenu);
-	 PopMenu=new CMenu();
+	ChMainMenu.LoadMenu(IDR_MAINFRAME);
+	ENMainMenu.LoadMenu(IDR_MyMenu);
+	PopMenu = new CMenu();
 }
 
-CMainFrame::~CMainFrame()
-{
+CMainFrame::~CMainFrame() {
 }
 
-int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
-{
+int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct) {
 	if (CFrameWnd::OnCreate(lpCreateStruct) == -1)
 		return -1;
 
-	if (!m_wndStatusBar.Create(this))
-	{
+	if (!m_wndStatusBar.Create(this)) {
 		TRACE0("無法建立狀態列\n");
 		return -1;      // 無法建立
 	}
-	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
+	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators) / sizeof(UINT));
 
 	return 0;
 }
 
-BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
-{
-	if( !CFrameWnd::PreCreateWindow(cs) )
+BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs) {
+	if (!CFrameWnd::PreCreateWindow(cs))
 		return FALSE;
 	// TODO: 在此經由修改 CREATESTRUCT cs 
 	// 達到修改視窗類別或樣式的目的
 
 	cs.style = WS_OVERLAPPED | WS_CAPTION | FWS_ADDTOTITLE
-		 | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_MAXIMIZE | WS_SYSMENU;
+		| WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_MAXIMIZE | WS_SYSMENU;
 
 	return TRUE;
 }
@@ -76,13 +66,11 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 // CMainFrame 診斷
 
 #ifdef _DEBUG
-void CMainFrame::AssertValid() const
-{
+void CMainFrame::AssertValid() const {
 	CFrameWnd::AssertValid();
 }
 
-void CMainFrame::Dump(CDumpContext& dc) const
-{
+void CMainFrame::Dump(CDumpContext& dc) const {
 	CFrameWnd::Dump(dc);
 }
 #endif //_DEBUG
@@ -90,24 +78,21 @@ void CMainFrame::Dump(CDumpContext& dc) const
 
 // CMainFrame 訊息處理常式
 
-void CMainFrame::OnSwitchSwitchmenu()
-{
+void CMainFrame::OnSwitchSwitchmenu() {
 	// TODO: 在此加入您的命令處理常式程式碼
-	// SetMenu(&ENMainMenu);
+	SetMenu(&ENMainMenu);
 	// m_Menu_Version=1;
 
 }
 
-void CMainFrame::OnSwitchSwitchmenu2()
-{
+void CMainFrame::OnSwitchSwitchmenu2() {
 	// TODO: 在此加入您的命令處理常式程式碼
-//	SetMenu(&ChMainMenu);//ChMainMenu
+	SetMenu(&ChMainMenu);//ChMainMenu
 	//m_Menu_Version=0;
 }
 
 
-void CMainFrame::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
-{
+void CMainFrame::OnContextMenu(CWnd* /*pWnd*/, CPoint point) {
 	// TODO: 在此加入您的訊息處理常式程式碼
 //	CMenu menu;	
 //	menu.LoadMenu(IDR_MyMenu);	//載入選單資源

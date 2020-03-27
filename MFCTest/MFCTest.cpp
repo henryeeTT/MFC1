@@ -70,8 +70,8 @@ BOOL CMFCTestApp::InitInstance()
 	// 框架視窗與檢視間進行連接
 	CSingleDocTemplate* pDocTemplate;
 	pDocTemplate = new CSingleDocTemplate(
-	//	/*IDR_MAINFRAME*/IDR_MyMenu,
-		IDR_MAINFRAME,
+			/*IDR_MAINFRAME*/IDR_MyMenu,
+		//IDR_MAINFRAME,
 		RUNTIME_CLASS(CMFCTestDoc),
 		RUNTIME_CLASS(CMainFrame),       // 主 SDI 框架視窗
 		RUNTIME_CLASS(CMFCTestView));
@@ -90,7 +90,7 @@ BOOL CMFCTestApp::InitInstance()
 	// /RegServer、/Register、/Unregserver 或 /Unregister 啟動應用程式，將傳回 FALSE。
 	if (!ProcessShellCommand(cmdInfo))
 		return FALSE;
-	 m_pMainWnd->SetWindowText("803220001 吳大二 803220003 游大二 ");
+	m_pMainWnd->SetWindowText("803220001 吳大二 803220003 游大二 ");
 	// 僅初始化一個視窗，所以顯示並更新該視窗
 	m_pMainWnd->ShowWindow(SW_SHOWMAXIMIZED);
 	m_pMainWnd->UpdateWindow();
@@ -109,7 +109,7 @@ class CAboutDlg : public CDialogEx
 public:
 	CAboutDlg();
 
-// 對話方塊資料
+	// 對話方塊資料
 	enum { IDD = IDD_ABOUTBOX };
 
 protected:
